@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-  type Articles {
+  type Article {
     id: ID
     title: String
     avatar: String
@@ -9,6 +9,7 @@ export const typeDefs = gql`
   }
   type Query {
     hello: String
-    getListArticles: [Articles]
+    getListArticles: [Article]
+    getArticle(id: ID): Article
   }
 `;

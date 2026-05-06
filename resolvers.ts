@@ -11,5 +11,13 @@ export const resolvers = {
       });
       return articles;
     },
+    getArticle: async (_: unknown, args: any) => {
+      const { id } = args;
+      const article = await Articles.findOne({
+        _id: id,
+        deleted: false,
+      });
+      return article;
+    },
   },
 };
