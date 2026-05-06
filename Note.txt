@@ -1,0 +1,2 @@
+- npm i graphql // thư viện cài đặt graphql
+- npm i apollo-server-express // cài đặt server apollo dùng trong express (nếu muốn cài thì phải hạ express xuống @4)
