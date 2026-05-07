@@ -4,16 +4,25 @@ import Categories from "../models/category";
 export const resolversArticle = {
   Query: {
     getListArticles: async (_: unknown, args: any) => {
+      const { sortKey, sortValue, currentPage, limitItem } = args;
+
       // sort
-      const { sortKey, sortValue } = args;
       const sort: any = {};
       if (sortKey && sortValue) {
         sort[sortKey] = sortValue;
       }
       // End sort
+
+      // pagination
+      const skip = (currentPage - 1) * limitItem;
+      // End pagination
+
       const articles = await Articles.find({
         deleted: false,
-      }).sort(sort);
+      })
+        .sort(sort)
+        .limit(limitItem)
+        .skip(skip);
       return articles;
     },
     getArticle: async (_: unknown, args: any) => {

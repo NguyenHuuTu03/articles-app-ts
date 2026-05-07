@@ -10,7 +10,12 @@ export const typeDefsArticle = gql`
   }
   # tất cả các phần lấy ra dữ liệu thì viết ở phần Query
   type Query {
-    getListArticles(sortKey: String, sortValue: String): [Article]
+    getListArticles(
+      sortKey: String
+      sortValue: String
+      currentPage: Int = 1
+      limitItem: Int = 2
+    ): [Article]
     getArticle(id: ID): Article
   }
 
