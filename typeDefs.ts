@@ -19,8 +19,9 @@ export const typeDefs = gql`
     avatar: String
     description: String
   }
+  # tất cả phần thay đổi dữ liệu thì viết ở phần Mutation
   type Mutation {
     createArticle(article: ArticleInput): Article
+    deleteArticle(id: ID): String
   }
-  # tất cả phần thay đổi dữ liệu thì viết ở phần Mutation
 `;

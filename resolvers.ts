@@ -24,7 +24,21 @@ export const resolvers = {
     createArticle: async (_: unknown, args: any) => {
       const { article } = args;
       const record = new Articles(article);
+      await record.save();
       return record;
+    },
+    deleteArticle: async (_: unknown, args: any) => {
+      const { id } = args;
+      await Articles.updateOne(
+        {
+          _id: id,
+        },
+        {
+          deleted: true,
+          deletedAt: Date.now(),
+        },
+      );
+      return "Đã xoá";
     },
   },
 };
