@@ -3,10 +3,9 @@ import dotenv from "dotenv";
 dotenv.config();
 import * as databaseConfig from "./config/database";
 databaseConfig.connectDB();
-import Articles from "./models/article.model";
 import { ApolloServer, gql } from "apollo-server-express";
-import { typeDefs } from "./typeDefs";
-import { resolvers } from "./resolvers";
+import { typeDefs } from "./typeDefs/index.typeDefs";
+import { resolvers } from "./resolvers/index.resolvers";
 
 const startServer = async () => {
   const app = express();
@@ -16,8 +15,8 @@ const startServer = async () => {
   // typeDefs để định nghĩa các trường được truy vấn (như model)
 
   const appolloServer = new ApolloServer({
-    typeDefs,
-    resolvers,
+    typeDefs: typeDefs,
+    resolvers: resolvers,
   });
 
   await appolloServer.start();
