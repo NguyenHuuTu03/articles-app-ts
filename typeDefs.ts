@@ -7,9 +7,20 @@ export const typeDefs = gql`
     avatar: String
     description: String
   }
+  # tất cả các phần lấy ra dữ liệu thì viết ở phần Query
   type Query {
     hello: String
     getListArticles: [Article]
     getArticle(id: ID): Article
   }
+
+  input ArticleInput {
+    title: String
+    avatar: String
+    description: String
+  }
+  type Mutation {
+    createArticle(article: ArticleInput): Article
+  }
+  # tất cả phần thay đổi dữ liệu thì viết ở phần Mutation
 `;

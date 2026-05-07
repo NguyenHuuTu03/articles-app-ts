@@ -20,4 +20,11 @@ export const resolvers = {
       return article;
     },
   },
+  Mutation: {
+    createArticle: async (_: unknown, args: any) => {
+      const { article } = args;
+      const record = new Articles(article);
+      return record;
+    },
+  },
 };
