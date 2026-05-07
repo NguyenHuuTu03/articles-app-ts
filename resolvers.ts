@@ -40,5 +40,18 @@ export const resolvers = {
       );
       return "Đã xoá";
     },
+    updateArticle: async (_: unknown, args: any) => {
+      const { id, article } = args;
+      await Articles.updateOne(
+        {
+          _id: id,
+        },
+        article,
+      );
+      const record = await Articles.findOne({
+        _id: id,
+      });
+      return record;
+    },
   },
 };
