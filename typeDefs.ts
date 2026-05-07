@@ -6,12 +6,19 @@ export const typeDefs = gql`
     title: String
     avatar: String
     description: String
+    category: Category
+  }
+  type Category {
+    id: ID
+    title: String
+    avatar: String
   }
   # tất cả các phần lấy ra dữ liệu thì viết ở phần Query
   type Query {
-    hello: String
     getListArticles: [Article]
     getArticle(id: ID): Article
+    getListCategory: [Category]
+    getCategory(id: ID): Category
   }
 
   input ArticleInput {
@@ -19,10 +26,18 @@ export const typeDefs = gql`
     avatar: String
     description: String
   }
+  input CategoryInput {
+    title: String
+    avatar: String
+  }
   # tất cả phần thay đổi dữ liệu thì viết ở phần Mutation
   type Mutation {
     createArticle(article: ArticleInput): Article
     deleteArticle(id: ID): String
     updateArticle(id: ID, article: ArticleInput): Article
+    # category
+    createCategory(category: CategoryInput): Category
+    deleteCategory(id: ID): String
+    updateCategory(id: ID, category: CategoryInput): Category
   }
 `;
