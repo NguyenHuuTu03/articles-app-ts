@@ -11,6 +11,7 @@ export const resolversArticle = {
         limitItem,
         filterKey,
         filterValue,
+        keyword,
       } = args;
 
       const find: any = {
@@ -36,6 +37,13 @@ export const resolversArticle = {
         find[filterKey] = filterValue;
       }
       // End filter
+
+      // search
+      if (keyword) {
+        const regex = new RegExp(keyword, "i");
+        find["title"] = regex;
+      }
+      // End search
 
       const articles = await Articles.find(find)
         .sort(sort)
