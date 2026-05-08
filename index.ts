@@ -19,6 +19,7 @@ const startServer = async () => {
   const appolloServer = new ApolloServer({
     typeDefs: typeDefs,
     resolvers: resolvers,
+    introspection: true, // gợi ý code trong graphql
     context: ({ req }) => {
       return { ...req };
     },
